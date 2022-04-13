@@ -55,6 +55,7 @@ const Navbar = () => {
                 >
                <Menu.Item>Favorites</Menu.Item> 
         </NavLink>
+         
 
          <Menu.Menu position='right'>
 
@@ -75,8 +76,8 @@ const Navbar = () => {
           </NavLink>
 
         </Menu.Menu>
-         
         
+         
         </Menu>
         </Grid>
         
