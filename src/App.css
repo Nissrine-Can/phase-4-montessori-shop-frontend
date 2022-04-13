@@ -6,3 +6,8 @@ body {
     margin: 20px;
 }
 
+.search-bar {
+    padding-left: 10px;
+    padding-bottom: 10px;
+    width: 100px; 
+}
