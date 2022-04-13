@@ -17,7 +17,7 @@ const MainContainer = () => {
 
   return (
     <div>
-        <Container textAlign="center">
+        <Container>
             <br />
             <h2>Our Inventory</h2>
             <br />
