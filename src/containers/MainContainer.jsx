@@ -1,34 +1,55 @@
 import React, {useState, useEffect } from 'react'
+
 import { Container } from 'semantic-ui-react'
 import ItemsContainer from './ItemsContainer'
-import SearchBar from '../components/SearchBar'
+import Search from '../components/Search'
+import Filter from '../components/Filter'
 
 const MainContainer = () => {
  
-    const [items, setItems] = useState([])
-    const [searchTerm, setSearchTerm] = useState("");
-
+    const [items, setItems] = useState([]);
+    const [itemList, setItemList] = useState([]);
+    
     useEffect(() => {
         fetch("/items")
         .then((resp) => resp.json())
         .then((data) => {
             setItems(data)
+            setItemList(data)
         })
     }, [])
 
-    const displayedItems = items.filter((item) => {
-        return item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    })
+    const searchItems = term => {
+        fetch("/items?search=" + term)
+        .then(resp => resp.json())
+        .then(data => setItemList(data))
+    }
 
-  return (
+    const filterItems = filter => {
+        if (filter === "") {
+            setItemList(items)
+        } else {
+            fetch("/items?filter=" + filter)
+            .then(resp => resp.json())
+            .then(data => setItemList(data))
+         }
+    
+    }
+    
+
+
+    
+   return (
     <div>
         <Container>
             <br />
             <h2>Our Inventory</h2>
             <br />
-            <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-            <ItemsContainer items={displayedItems}/>
-        </Container>
+            <Search searchItems={searchItems} />
+            <Filter items={items} filterItems={filterItems} />
+            <br />
+            <ItemsContainer items={itemList} />
+         </Container>
     </div>
   )
 }

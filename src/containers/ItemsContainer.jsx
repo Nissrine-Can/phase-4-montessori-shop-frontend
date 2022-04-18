@@ -5,11 +5,13 @@ import ItemCard from '../components/ItemCard'
 
 const ItemsContainer = ({ items }) => {
 
-    const itemList = items.map((item) => <ItemCard key={item.id} item={item} />)
-  return (
+  
+ return (
     <div className="items-container">
         <Card.Group itemsPerRow={3}>
-            {itemList}
+            {items.map((item) => (
+              <ItemCard key={item.id} item={item} />
+            ))}
         </Card.Group>
     </div>
   )
