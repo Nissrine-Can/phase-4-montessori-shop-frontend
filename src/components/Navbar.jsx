@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Grid, Menu } from 'semantic-ui-react'
+import { Grid, Menu, Icon } from 'semantic-ui-react'
 
 
 const Navbar = () => {
@@ -35,7 +35,7 @@ const Navbar = () => {
         <NavLink 
                 to="/about-us"
                 style={linkStyles}
-                activeStyle={{ background: "darkblue" }}
+                activestyle={{ background: "darkblue" }}
                 >
                     <Menu.Item>About us</Menu.Item>
                 </NavLink>
@@ -43,7 +43,7 @@ const Navbar = () => {
          <NavLink 
                 to="/items"
                 style={linkStyles}
-                activeStyle={{ background: "darkblue" }}
+                activestyle={{ background: "darkblue" }}
                 >
                     <Menu.Item>Explore</Menu.Item>
              </NavLink>
@@ -51,7 +51,7 @@ const Navbar = () => {
          <NavLink 
                 to="/favorites"
                 style={linkStyles}
-                activeStyle={{ background: "darkblue" }}
+                activestyle={{ background: "darkblue" }}
                 >
                <Menu.Item>Favorites</Menu.Item> 
         </NavLink>
@@ -62,7 +62,7 @@ const Navbar = () => {
          <NavLink 
                 to="/signup"
                 style={linkStyles}
-                activeStyle={{ background: "darkblue" }}
+                activestyle={{ background: "darkblue" }}
              >
                 <Menu.Item>Sign Up</Menu.Item>
          </NavLink>
@@ -70,9 +70,17 @@ const Navbar = () => {
          <NavLink 
                 to="/login"
                 style={linkStyles}
-                activeStyle={{ background: "darkblue" }}
+                activestyle={{ background: "darkblue" }}
              >
           <Menu.Item>Login</Menu.Item>
+          </NavLink>
+
+          <NavLink
+          to="/cart"
+          style={linkStyles}
+          activestyle={{ background: "darkblue" }}
+          >
+               <Icon name="shopping cart" size="large" color="blue"/>
           </NavLink>
 
         </Menu.Menu>
