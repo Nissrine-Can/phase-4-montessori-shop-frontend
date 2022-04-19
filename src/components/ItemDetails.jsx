@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import React from 'react'
+
 import { Grid, Image, Button } from 'semantic-ui-react'
 import AddToCartModal from './AddToCartModal'
 
 
-const ItemDetails = () => {
+const ItemDetails = ({ onAddToCart, selectedItem, backToItems }) => {
  
-    const [selectedItem, setSelectedItem] = useState("")
-    const params = useParams().id 
-
-    useEffect(() => {
-        fetch(`/items/${params}`)
-        .then(resp => resp.json())
-        .then(data => setSelectedItem(data))
-    }, [params])
-
+    
   return (
     <div>
         <Grid>
@@ -28,13 +20,10 @@ const ItemDetails = () => {
              <h3>Age group: {selectedItem.categories}</h3>
              <h4>Description: {selectedItem.description}</h4>
              <br />
-             <Link to={"/items"}>
-               <Button >Back To All Items</Button>
-            </Link>
-               <br />
-               <br />
-               <br />
-             <AddToCartModal />
+             <Button onClick={backToItems} >Back To All Items</Button>
+            <br />
+            <br />
+             <AddToCartModal onAddToCart={onAddToCart} />
         </Grid.Column>
         </Grid>
     </div>

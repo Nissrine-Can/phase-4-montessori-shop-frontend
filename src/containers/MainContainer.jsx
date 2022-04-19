@@ -4,11 +4,13 @@ import { Container } from 'semantic-ui-react'
 import ItemsContainer from './ItemsContainer'
 import Search from '../components/Search'
 import Filter from '../components/Filter'
+import ItemDetails from '../components/ItemDetails'
 
 const MainContainer = () => {
  
     const [items, setItems] = useState([]);
     const [itemList, setItemList] = useState([]);
+    const [selectedItem, setSelectedItem] = useState(null);
     
     useEffect(() => {
         fetch("/items")
@@ -33,10 +35,15 @@ const MainContainer = () => {
             .then(resp => resp.json())
             .then(data => setItemList(data))
          }
-    
     }
     
+    const itemSelected = (id) => {
+        setSelectedItem(items.find((item) => item.id === id))
+    }
 
+    const backToItems = () => {
+        setSelectedItem(null)
+    }
 
     
    return (
@@ -48,7 +55,15 @@ const MainContainer = () => {
             <Search searchItems={searchItems} />
             <Filter items={items} filterItems={filterItems} />
             <br />
-            <ItemsContainer items={itemList} />
+            { !selectedItem ? (
+                <ItemsContainer items={itemList} itemSelected={itemSelected} />
+            ) : (
+                <ItemDetails 
+                selectedItem={selectedItem}
+                backToItems={backToItems}
+                />
+            )}
+            
          </Container>
     </div>
   )
