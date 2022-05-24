@@ -1,39 +1,50 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button, Header, Form, Grid, Segment } from 'semantic-ui-react'
-import Error from '../errors/Error'
+
 
 const Signup = ({ setCurrentUser }) => {
 
-  const [email, setEmail] = useState("")
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [passwordConfirmation, setPasswordConfirmation] = useState("")
-  const [errors, setErrors] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    passwordConfirmation: ""
+   });
+
+   const navigate = useNavigate()
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
-    setErrors([]);
-    setIsLoading(true);
+   
+    const userCreds = { ...formData }
+  console.log(userCreds);
     fetch("/signup", {
       method: "POST",
       headers: {
-        contentType: "application/json"
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        email,
-        username,
-        password,
-        password_confirmation: passwordConfirmation,
-      }),
-    }).then((res) => {
-      setIsLoading(false);
-      if (res.ok) {
-        res.json((user) => setCurrentUser(user));
-      } else {
-        res.json().then((err) => setErrors(err.errors))
-      }
-    });
+      body: JSON.stringify(userCreds),
+    })
+    .then((resp) => resp.json())
+    .then((user) => {
+      console.log(user)
+      setFormData({
+        email: "",
+        username: "",
+        password: "",
+        passwordConfirmation: ""
+      })
+      setCurrentUser(user)
+      navigate("/items")
+    })
   }
   
   return (
@@ -48,45 +59,45 @@ const Signup = ({ setCurrentUser }) => {
                 <Segment>
                     <Form.Input 
                         placeholder='joe@schmoe.com'
+                        name="email"
                          type="text"
                          id="email"
-                         value={email} 
-                         onChange={ (e) => setEmail(e.target.value)}
+                         value={formData.email} 
+                         onChange={handleChange}
                         />
                     <Form.Input 
                        placeholder='Username'
+                       name="username"
                         type='text'
                         id='username'
-                        value={username}
-                        onChange={ (e) => setUsername(e.target.value)}
+                        value={formData.username}
+                        onChange={handleChange}
                         />
                     <Form.Input 
                         placeholder='Password'
+                        name="password"
                         icon='lock'
                         iconPosition='left'
                         type='password'  
                         id='password'
-                        value={password}
-                        onChange={ (e) => setPassword(e.target.value)}
+                        value={formData.password}
+                        onChange={handleChange}
                          />
                      <Form.Input 
                         placeholder='Password Confirmation'
+                        name="passwordConfirmation"
                         icon='lock'
                         iconPosition='left'
                         type='password'  
-                        id='password_confirmation'
-                        value={passwordConfirmation}
-                        onChange={ (e) => setPasswordConfirmation(e.target.value)}
+                        id='passwordConfirmation'
+                        value={formData.passwordConfirmation}
+                        onChange={handleChange}
                      />
                 </Segment>
 
                 <Segment>
-                    <Button  color='blue'fluid type='submit'>{isLoading ? "Loading..." : "Sign Up"}</Button>
-                    <Form.Input>
-                      {errors.map((err) => (
-                        <Error key={err}>{err}</Error>
-                      ))}
-                    </Form.Input>
+                    <Button  color='blue'fluid type='submit'>"Sign Up"</Button>
+                    
                 </Segment>
 
             </Form>

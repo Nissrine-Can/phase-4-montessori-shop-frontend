@@ -1,39 +1,56 @@
 import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
-import Error from '../errors/Error';
 
 
-const Login = ({onLogin}) => {
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+const Login = ({ setCurrentUser }) => {
 
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  })
+
+  const navigate = useNavigate()
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  }
+  
+  
   function handleSubmit(e) {
     e.preventDefault();
-    setIsLoading(true);
+
+    const userCreds = { ...formData };
+
     fetch("/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password}),
-    }).then((res) => {
-      setIsLoading(false);
-      if (res.ok) {
-        res.json().then((user) => onLogin(user));
-      } else {
-        res.json().then((err) => setErrors(err.errors));
-      }
-    });
+      body: JSON.stringify(userCreds),
+    })
+      .then((r) => r.json())
+      .then((user) => {
+        console.log(user);
+        setCurrentUser(user)
+        setFormData({
+          username: "",
+          password: "",
+        });
+        navigate("/items")
+      });
   }
+  
   return (
     <div>
         <Segment placeholder>
     <Grid columns={2} relaxed='very' stackable>
       <Grid.Column>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Input
             icon='user'
             iconPosition='left'
@@ -41,9 +58,10 @@ const Login = ({onLogin}) => {
             placeholder='Username'
             type='text'
             id='username'
+            name="username"
             autoComplete="off"
-            value={username}
-            onChange={ (e) => setUsername(e.target.value)}
+            value={formData.username}
+            onChange={handleChange}
           />
           <Form.Input
             icon='lock'
@@ -51,22 +69,19 @@ const Login = ({onLogin}) => {
             label='Password'
             type='password'
             id='password'
+            name='password'
             autoComplete='current-password'
-            value={password}
-            onChange={ (e) => setPassword(e.target.value)}
+            value={formData.password}
+            onChange={handleChange}
           />
 
-          <Button content={isLoading ? "Loading..." : "Login"} primary />
-          <Form.Input>
-          {errors.map((err) => (
-            <Error key={err}>{err}</Error>
-          ))}
-          </Form.Input>
+          <Button content='Login' primary />
+         
         </Form>
       </Grid.Column>
 
       <Grid.Column verticalAlign='middle'>
-        <Button content='Sign up' icon='signup' size='big' />
+       <Link to='/signup'><Button content='Sign up' icon='signup' size='big' /></Link> 
       </Grid.Column>
     </Grid>
 
