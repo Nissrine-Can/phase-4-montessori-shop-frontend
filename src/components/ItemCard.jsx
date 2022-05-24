@@ -1,24 +1,33 @@
 import React from 'react'
 import { Card, Image, Icon } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
+const ItemCard = ({ item, removeFavorite, redHeart }) => {
 
-const ItemCard = ({ item, itemSelected }) => {
+  const navigate = useNavigate()
+
   const handleClick = () => {
-    itemSelected(item.id)
+      navigate(`/items/${item.id}`)
   }
-  return (
+
+   return (
     <div className="item-card">
         <Card color='blue' >
-      
-        <div className="image" onClick={handleClick}>
-           <Image src={item.image} alt={item.name} wrapped />     
-            </div>
-           
-            <Card.Content>
+     
+        <div onClick={handleClick} className="image" >
+          <Image src={item.image} alt={item.name} wrapped />     
+         </div>
+         
+           <Card.Content>
                 <Card.Header>{item.name}</Card.Header>
                 <Card.Description>{item.price}</Card.Description>
-                <span style={{paddingLeft: "240px"}}><Icon bordered name="add to cart" color="blue" area-label="add to cart"/></span>
+               
             </Card.Content>
+            <br />
+            {redHeart ? (
+              <span onClick={() => removeFavorite(item)}>
+                <Icon color="red" name="heart" />
+              </span>
+            ) : null }
         </Card>
     </div>
   )
