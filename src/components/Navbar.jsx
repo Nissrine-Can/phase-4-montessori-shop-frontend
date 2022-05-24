@@ -1,35 +1,40 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { Grid, Menu, Icon } from 'semantic-ui-react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { Grid, Menu, Button, Icon } from 'semantic-ui-react'
 
+const linkStyles = {
+  width: "5 rem",
+  padding: "12px",
+  margin: "0 6px 6px",
+  textDecoration: "none",
+  color: "black",
+}
 
-const Navbar = () => {
+const Navbar = ({ auth, currentUser, setCurrentUser, setAuth, onAddToCart }) => {
 
-    const linkStyles = {
-        width: "5 rem",
-        padding: "12px",
-        margin: "0 6px 6px",
-        textDecoration: "none",
-        color: "black",
-      }
+  const navigate = useNavigate()
 
+  const handleLogout = () => {
+    fetch("/logout", {
+      method: 'DELETE'
+    })
+    console.log('logged out')
+    setCurrentUser(null)
+    setAuth(false)
+    navigate("/")
+  }
+  
 
-  return (
-    <div>
+    return (
+    <div className="navbar">
       <Grid padded>
        <Menu borderless fluid size="large">
        
-            <Link to="/">
-                <Menu.Item>
-                MONTESSORI SHOP
-                </Menu.Item>
-            </Link>
-        
             <NavLink 
                     to="/"
                     style={linkStyles}
                     >
-                        <Menu.Item>Home</Menu.Item>
+            <Menu.Item> Montessori Shop</Menu.Item>           
             </NavLink>
        
         <NavLink 
@@ -37,29 +42,63 @@ const Navbar = () => {
                 style={linkStyles}
                 activestyle={{ background: "darkblue" }}
                 >
-                    <Menu.Item>About us</Menu.Item>
+                    <Menu.Item>About Us</Menu.Item>
+         </NavLink>
+
+         <NavLink 
+                    to="/items"
+                    style={linkStyles}
+                    activestyle={{ background: "darkblue" }}
+                    >
+                       <Menu.Item>Buy</Menu.Item>
+          </NavLink>
+
+                
+         
+        
+          {currentUser? (
+            <>
+             <NavLink 
+                       to="/favorites"
+                       style={linkStyles}
+                       activestyle={{ background: "darkblue" }}
+                       >
+                     <Menu.Item>Favorites</Menu.Item>
                 </NavLink>
 
-         <NavLink 
-                to="/items"
-                style={linkStyles}
-                activestyle={{ background: "darkblue" }}
-                >
-                    <Menu.Item>Explore</Menu.Item>
-             </NavLink>
-         
-         <NavLink 
-                to="/favorites"
-                style={linkStyles}
-                activestyle={{ background: "darkblue" }}
-                >
-               <Menu.Item>Favorites</Menu.Item> 
-        </NavLink>
-         
+         <Menu.Menu position="right">
+        
+                <NavLink 
+                   to="/items/new"
+                   style={linkStyles}
+                   activestyle={{ background: "darkblue" }}
+                   >
+                   <Menu.Item>Sell</Menu.Item>
+                 </NavLink>
 
-         <Menu.Menu position='right'>
+                 <NavLink
+                   to="/account"
+                   style={linkStyles}
+                   activestyle={{ background: "darkblue" }}
+                  >
+                   <span className="nav-span"><Icon name="user" bordered color="blue" area-label="user"/></span>
+                 </NavLink>
 
-         <NavLink 
+              <Button 
+              onClick={handleLogout}
+              >
+                  Logout
+                </Button>
+            
+        </Menu.Menu>
+        
+
+       </>
+      
+           ) : (
+            <>
+           <Menu.Menu position='right'>
+           <NavLink 
                 to="/signup"
                 style={linkStyles}
                 activestyle={{ background: "darkblue" }}
@@ -74,18 +113,13 @@ const Navbar = () => {
              >
           <Menu.Item>Login</Menu.Item>
           </NavLink>
+          </Menu.Menu>
 
-          <NavLink
-          to="/cart"
-          style={linkStyles}
-          activestyle={{ background: "darkblue" }}
-          >
-               <Icon name="shopping cart" size="large" color="blue"/>
-          </NavLink>
-
-        </Menu.Menu>
-        
+           </>
+           ) }
+           
          
+        
         </Menu>
         </Grid>
         
