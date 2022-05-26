@@ -10,7 +10,7 @@ const linkStyles = {
   color: "black",
 }
 
-const Navbar = ({ auth, currentUser, setCurrentUser, setAuth, onAddToCart }) => {
+const Navbar = ({ auth, currentUser, setCurrentUser, setAuth }) => {
 
   const navigate = useNavigate()
 
@@ -75,6 +75,8 @@ const Navbar = ({ auth, currentUser, setCurrentUser, setAuth, onAddToCart }) => 
                    >
                    <Menu.Item>Sell</Menu.Item>
                  </NavLink>
+
+                 <h4 style={{color: "blue"}}>Welcome, {currentUser.username}!</h4>
 
                  <NavLink
                    to="/account"

@@ -8,6 +8,7 @@ const ItemsContainer = ({
     searchItems, 
     filterItems,
     items,
+    itemList,
     addFavorite,
     removeFavorite,
     currentUser, 
@@ -28,7 +29,7 @@ return (
         
             <div className="items-container">
             <Card.Group itemsPerRow={3}>
-            {items.map((item) => (
+            {itemList.map((item) => (
             <ItemCard
              key={item.id} 
              item={item} 
