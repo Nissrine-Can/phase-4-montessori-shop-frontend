@@ -125,7 +125,7 @@ const SellItemForm = ({ addItem }) => {
                             value={formData.price}
                             onChange={handleChange}
                              />
-                         <Form.Input 
+                         <Form.TextArea 
                             placeholder="Description"
                             name='description'
                             type='text'  
