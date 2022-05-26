@@ -5,7 +5,7 @@ import BuyNowModal from './BuyNowModal'
 
 
 const ItemDetails = ({ 
-      onAddToCart, 
+      onBuyItem, 
       selectedItem,
       setSelectedItem,
       backToItems,
@@ -26,17 +26,7 @@ const ItemDetails = ({
                 setSelectedItem(selectedItem)
               
               })
-        }, [id, setSelectedItem])
-
-      //   const favorOrUnfavorIcon = (selectedItem) => {
-
-      //     const favId = currentUser.favorite_items.find(f => f.item_id === selectedItem.id)
-      //     if (favId) {
-      //       return <Icon onClick={() => removeFavorite(selectedItem.id) } color="red" name="heart" />
-      //    } else {
-      //      return <Icon onClick={() => addFavorite(selectedItem.id) } color="red" name="heart outline" />
-      //   }
-      //  }       
+        }, [id, setSelectedItem])   
       
  return (
     <div>
@@ -60,7 +50,7 @@ const ItemDetails = ({
             <br />
              <BuyNowModal 
                 cartItems={cartItems} 
-                onAddToCart={onAddToCart} 
+                onBuyItem={onBuyItem} 
                 selectedItem={selectedItem}
                   />
                   <br />
