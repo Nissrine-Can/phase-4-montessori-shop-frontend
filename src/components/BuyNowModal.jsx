@@ -21,7 +21,7 @@ const BuyNowModal = ({
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       trigger={
-      <Button color="yellow" disabled={selectedItem.status === "sold" }>
+      <Button color="yellow" disabled={selectedItem.status === "Sold" }>
           { selectedItem.status }
       </Button>
     }
