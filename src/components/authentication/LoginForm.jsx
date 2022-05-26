@@ -4,7 +4,7 @@ import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
 
 
 
-const Login = ({ setCurrentUser }) => {
+const Login = ({ setCurrentUser, setAuthenticated, setFavorites}) => {
 
   const [formData, setFormData] = useState({
     username: "",
@@ -35,8 +35,10 @@ const Login = ({ setCurrentUser }) => {
     })
       .then((r) => r.json())
       .then((user) => {
-        console.log(user);
-        setCurrentUser(user)
+        //console.log(user)
+         setCurrentUser(user)
+          setAuthenticated(true)
+          setFavorites(user.items)
         setFormData({
           username: "",
           password: "",
