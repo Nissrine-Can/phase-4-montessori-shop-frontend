@@ -89,7 +89,7 @@ const backToItems = () => {
 }
 
   
-  const onAddToCart = (item) => {
+  const onBuyItem = (item) => {
     fetch(`/items/${item.id}/sold`,{
       method: "PATCH",
       headers: {
@@ -99,11 +99,12 @@ const backToItems = () => {
     })
     .then(resp => resp.json())
     .then(itemSold => {
-       console.log(itemSold)
+       setSelectedItem(itemSold)
        setSold(true)
        const updatedItemsAfterSell = items.filter(item => item.sold !== true)
        setItems(updatedItemsAfterSell)
        setItemList(updatedItemsAfterSell)
+       
     })
   }
   
@@ -194,7 +195,7 @@ const fetchListings = () => {
           setAuth={setAuthenticated}
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
-          onAddToCart={onAddToCart}
+          onBuyItem={onBuyItem}
            />
 
         <Routes>
@@ -205,7 +206,7 @@ const fetchListings = () => {
                                                                       selectedItem={selectedItem}
                                                                       setSelectedItem={setSelectedItem}
                                                                       backToItems={backToItems}
-                                                                      onAddToCart={onAddToCart}
+                                                                      onBuyItem={onBuyItem}
                                                                       addFavorite={addFavorite}
                                                                       removeFavorite={removeFavorite}
                                                                      currentUser={currentUser}
@@ -223,7 +224,12 @@ const fetchListings = () => {
           
           
           <Route path="/signup" element={<SignupForm setCurrentUser={setCurrentUser}  />} />
-          <Route path="/login" element={<LoginForm setCurrentUser={setCurrentUser} />} />
+          <Route path="/login" element={<LoginForm 
+                                                                    setCurrentUser={setCurrentUser}
+                                                                    setAuthenticated={setAuthenticated}
+                                                                    setFavorites={setFavorites}
+                                                                     />}
+                                                                     />
 
          <Route 
             path="/favorites" 
