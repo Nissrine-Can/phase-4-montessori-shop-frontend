@@ -3,7 +3,7 @@ import { Modal, Button } from 'semantic-ui-react'
 
 
 const BuyNowModal = ({ 
-    onAddToCart,
+    onBuyItem,
     selectedItem 
   }) => {
   
@@ -11,7 +11,7 @@ const BuyNowModal = ({
 
     const handleClick = () => {
         setOpen(false)
-        onAddToCart(selectedItem)
+        onBuyItem(selectedItem)
     }
 
   return (
@@ -21,7 +21,7 @@ const BuyNowModal = ({
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       trigger={
-      <Button color="yellow">
+      <Button color="yellow" disabled={selectedItem.status === "sold" }>
           { selectedItem.status }
       </Button>
     }
