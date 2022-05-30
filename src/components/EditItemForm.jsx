@@ -69,7 +69,7 @@ const EditItemForm = ({ handleUpdateListing, listingToEdit }) => {
      }
 
   return (
-    <div style= {{ paddingTop: "50px" }}>
+    <div style= {{ paddingTop: "50px", marginBottom: "300px" }}>
           <Grid textAlign="center" verticalAlign="middle">
             <Grid.Column style= {{ maxWidth: 800 }}>
               
@@ -123,7 +123,7 @@ const EditItemForm = ({ handleUpdateListing, listingToEdit }) => {
                     </Segment>
     
                     <Segment>
-                        <Button  color='red' fluid type='submit'>Edit Item</Button>
+                        <Button  color='blue' fluid type='submit'>Edit Item</Button>
                         
                     </Segment>
     

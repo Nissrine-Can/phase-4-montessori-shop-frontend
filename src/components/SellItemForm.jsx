@@ -92,7 +92,7 @@ const SellItemForm = ({ addItem }) => {
       
       
       return (
-        <div style= {{ paddingTop: "50px" }}>
+        <div style= {{ paddingTop: "50px", marginBottom:"300px" }}>
           <Grid textAlign="center" verticalAlign="middle">
             <Grid.Column style= {{ maxWidth: 800 }}>
               

@@ -35,7 +35,6 @@ const Login = ({ setCurrentUser, setAuthenticated, setFavorites}) => {
     })
       .then((r) => r.json())
       .then((user) => {
-        //console.log(user)
          setCurrentUser(user)
           setAuthenticated(true)
           setFavorites(user.items)

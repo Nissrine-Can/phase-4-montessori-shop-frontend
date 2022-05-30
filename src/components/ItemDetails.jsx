@@ -10,15 +10,13 @@ const ItemDetails = ({
       setSelectedItem,
       backToItems,
       cartItems, 
-      addFavorite,
-      removeFavorite,
-      currentUser
+      addFavorite
       }
       ) => {
         
         const {id} = useParams()
         
-
+        
         useEffect(() => {
           fetch(`/items/${id}`)
               .then(resp => resp.json())
@@ -29,14 +27,14 @@ const ItemDetails = ({
         }, [id, setSelectedItem])   
       
  return (
-    <div>
+    <div style={{padding: '100px'}}>
     {selectedItem ? 
     <Grid>
           <Grid.Column mobile={16} computer={4}>
               <Image src={selectedItem.image} alt={selectedItem.name} />
               <br />
-              <div >
-                <Icon onClick={() => addFavorite(selectedItem) } color="red" name="heart outline" />
+              <div style={{paddingLeft: '110px', paddingTop: '30px'}}>
+                <Icon onClick={() => addFavorite(selectedItem) } color="red" size="large" link  name="heart outline" />
               </div>
           </Grid.Column>
           <Grid.Column mobile={16} computer={9}>

@@ -2,10 +2,13 @@ import React from 'react'
 import ItemCard from '../components/ItemCard'
 import { Container, Card } from 'semantic-ui-react'
 
-
 const Favorites = ({ favorites, removeFavorite }) => {
+
   return (
+    <div style={{paddingTop: '100px', paddingBottom: '600px'}}>
     <Container textAlign="center">
+      {favorites.length === 0 ? <h2 style={{ paddingTop: '50px' }}>You have no favorites!</h2> :
+      <>
       <div>
         <h1>The items you liked!</h1>
       </div>
@@ -23,7 +26,10 @@ const Favorites = ({ favorites, removeFavorite }) => {
 
         </Card.Group>
       </div>
+      </>
+}
     </Container>
+    </div>
   )
 }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { Grid, Menu, Button, Icon } from 'semantic-ui-react'
 
@@ -10,7 +10,10 @@ const linkStyles = {
   color: "black",
 }
 
-const Navbar = ({ auth, currentUser, setCurrentUser, setAuth }) => {
+const Navbar = ({ currentUser, setCurrentUser, setAuth }) => {
+
+  const [activeItem, setActiveItem] = useState(null)
+  const handleItemClick = (e, { name }) => setActiveItem( name )
 
   const navigate = useNavigate()
 
@@ -34,23 +37,33 @@ const Navbar = ({ auth, currentUser, setCurrentUser, setAuth }) => {
                     to="/"
                     style={linkStyles}
                     >
-            <Menu.Item> Montessori Shop</Menu.Item>           
+            <Menu.Item
+             name='Montessori Shop'
+             active={activeItem === 'Montessori Shop'}
+             onClick={handleItemClick}
+            > Montessori Shop</Menu.Item>           
             </NavLink>
        
         <NavLink 
                 to="/about-us"
                 style={linkStyles}
-                activestyle={{ background: "darkblue" }}
                 >
-                    <Menu.Item>About Us</Menu.Item>
+                    <Menu.Item
+                    name='About Us'
+                    active={activeItem === 'About Us'}
+                    onClick={handleItemClick}
+                    >About Us</Menu.Item>
          </NavLink>
 
          <NavLink 
                     to="/items"
                     style={linkStyles}
-                    activestyle={{ background: "darkblue" }}
                     >
-                       <Menu.Item>Buy</Menu.Item>
+                       <Menu.Item
+                       name='Buy'
+                       active={activeItem === 'Buy'}
+                       onClick={handleItemClick}
+                       >Buy</Menu.Item>
           </NavLink>
 
                 
@@ -61,9 +74,12 @@ const Navbar = ({ auth, currentUser, setCurrentUser, setAuth }) => {
              <NavLink 
                        to="/favorites"
                        style={linkStyles}
-                       activestyle={{ background: "darkblue" }}
                        >
-                     <Menu.Item>Favorites</Menu.Item>
+                     <Menu.Item
+                     name='Favorites'
+                     active={activeItem === 'Favorites'}
+                     onClick={handleItemClick}
+                     >Favorites</Menu.Item>
                 </NavLink>
 
          <Menu.Menu position="right">
@@ -71,9 +87,11 @@ const Navbar = ({ auth, currentUser, setCurrentUser, setAuth }) => {
                 <NavLink 
                    to="/items/new"
                    style={linkStyles}
-                   activestyle={{ background: "darkblue" }}
                    >
-                   <Menu.Item>Sell</Menu.Item>
+                   <Menu.Item
+                   name='Sell'
+                   active={activeItem === 'Sell'}
+                   onClick={handleItemClick}>Sell</Menu.Item>
                  </NavLink>
 
                  <h4 style={{color: "blue"}}>Welcome, {currentUser.username}!</h4>
@@ -81,7 +99,6 @@ const Navbar = ({ auth, currentUser, setCurrentUser, setAuth }) => {
                  <NavLink
                    to="/account"
                    style={linkStyles}
-                   activestyle={{ background: "darkblue" }}
                   >
                    <span className="nav-span"><Icon name="user" bordered color="blue" area-label="user"/></span>
                  </NavLink>

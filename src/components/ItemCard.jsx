@@ -14,7 +14,7 @@ const ItemCard = ({ item, removeFavorite, redHeart }) => {
         <Card color='blue' >
      
         <div onClick={handleClick} className="image" >
-          <Image src={item.image} alt={item.name} wrapped />     
+          <Image as="a" src={item.image} alt={item.name} wrapped />     
          </div>
          
            <Card.Content>

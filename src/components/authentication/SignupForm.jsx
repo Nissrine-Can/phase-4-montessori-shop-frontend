@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button, Header, Form, Grid, Segment } from 'semantic-ui-react'
 
 
-const Signup = ({ setCurrentUser }) => {
+const Signup = ({ setCurrentUser, setAuthenticated, setFavorites }) => {
 
   const [formData, setFormData] = useState({
     email: "",
@@ -25,7 +25,6 @@ const Signup = ({ setCurrentUser }) => {
     e.preventDefault();
    
     const userCreds = { ...formData }
-  console.log(userCreds);
     fetch("/signup", {
       method: "POST",
       headers: {
@@ -43,6 +42,8 @@ const Signup = ({ setCurrentUser }) => {
         passwordConfirmation: ""
       })
       setCurrentUser(user)
+      setAuthenticated(true)
+      setFavorites(user.items)
       navigate("/items")
     })
   }

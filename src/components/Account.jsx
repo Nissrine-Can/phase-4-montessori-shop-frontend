@@ -16,6 +16,7 @@ const Account = () => {
 
   return (
     <>
+    <div style={{padding: '100px', marginBottom:'400px'}}>
     <div>
         <Button color="orange" onClick={handleClick}>Listings</Button>
     </div>
@@ -23,6 +24,7 @@ const Account = () => {
     <br />
     <div>
         <Button   color="olive" onClick={handleClickPurchased}>Purchased Items</Button>
+    </div>
     </div>
 
     </>

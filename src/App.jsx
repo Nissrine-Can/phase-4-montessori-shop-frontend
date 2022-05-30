@@ -5,6 +5,7 @@ import {
         useNavigate,
         } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Home from './components/Home'
 import About from './components/About'
 import ItemsContainer from './containers/ItemsContainer'
@@ -17,6 +18,7 @@ import SellItemForm from './components/SellItemForm'
 import EditItemForm from './components/EditItemForm'
 import Listings from './components/Listings'
 import PurchasedItems from './components/PurchasedItems'
+
 
 
 
@@ -50,8 +52,6 @@ const App = () => {
           setCurrentUser(user)
           setAuthenticated(true)
           setFavorites(user.items)
-          //setPurchasedItems(user.purchased_items)
-          //setListings(user.sold_items)
         });
       } else {
         setAuthenticated(true)
@@ -223,7 +223,11 @@ const fetchListings = () => {
                                                                 }/>
           
           
-          <Route path="/signup" element={<SignupForm setCurrentUser={setCurrentUser}  />} />
+          <Route path="/signup" element={<SignupForm 
+                                                                   setCurrentUser={setCurrentUser}  
+                                                                   setAuthenticated={setAuthenticated}
+                                                                   setFavorites={setFavorites}
+                                                                   />} />
           <Route path="/login" element={<LoginForm 
                                                                     setCurrentUser={setCurrentUser}
                                                                     setAuthenticated={setAuthenticated}
@@ -273,6 +277,7 @@ const fetchListings = () => {
           <Route path="/account" element={!authenticated ? <h2>Loading...</h2> : <Account />} />
 
          </Routes>
+         <Footer />
      </>
     )
 
