@@ -4,6 +4,7 @@ import Search from '../components/Search'
 import Filter from '../components/Filter'
 import ItemCard from '../components/ItemCard'
 
+
 const ItemsContainer = ({ 
     searchItems, 
     filterItems,
@@ -11,8 +12,7 @@ const ItemsContainer = ({
     itemList,
     addFavorite,
     removeFavorite,
-    currentUser, 
-    
+    currentUser
 }) => {
  
     
