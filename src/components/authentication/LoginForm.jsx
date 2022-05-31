@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
-
+import { BASE_URL } from '../../Globals'
 
 
 const Login = ({ setCurrentUser, setAuthenticated, setFavorites}) => {
@@ -26,7 +26,7 @@ const Login = ({ setCurrentUser, setAuthenticated, setFavorites}) => {
 
     const userCreds = { ...formData };
 
-    fetch("/login", {
+    fetch(BASE_URL + "/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

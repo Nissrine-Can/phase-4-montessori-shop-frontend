@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { Grid, Menu, Button, Icon } from 'semantic-ui-react'
+import { BASE_URL } from '../Globals'
 
 const linkStyles = {
   width: "5 rem",
@@ -18,7 +19,7 @@ const Navbar = ({ currentUser, setCurrentUser, setAuth }) => {
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    fetch("/logout", {
+    fetch(BASE_URL + "/logout", {
       method: 'DELETE'
     })
     console.log('logged out')

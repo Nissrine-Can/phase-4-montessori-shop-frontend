@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
 import BuyNowModal from './BuyNowModal'
-
+import {BASE_URL} from '../Globals'
 
 const ItemDetails = ({ 
       onBuyItem, 
@@ -18,7 +18,7 @@ const ItemDetails = ({
         
         
         useEffect(() => {
-          fetch(`/items/${id}`)
+          fetch(`${BASE_URL}/items/${id}`)
               .then(resp => resp.json())
               .then((selectedItem) => {
                 setSelectedItem(selectedItem)

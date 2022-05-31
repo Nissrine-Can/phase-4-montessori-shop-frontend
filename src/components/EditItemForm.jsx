@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Header, Form, Grid, Segment, Dropdown } from 'semantic-ui-react'
-
+import {BASE_URL} from '../Globals'
 const ageRangeOptions = [
     {
       key: '0 - 6 Months',
@@ -55,7 +55,7 @@ const EditItemForm = ({ handleUpdateListing, listingToEdit }) => {
       function handleSubmit(e) {
         e.preventDefault();
 
-        fetch(`/listings/${listingToEdit.id}`, {
+        fetch(`${BASE_URL}/listings/${listingToEdit.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"

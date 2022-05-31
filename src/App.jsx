@@ -18,7 +18,7 @@ import SellItemForm from './components/SellItemForm'
 import EditItemForm from './components/EditItemForm'
 import Listings from './components/Listings'
 import PurchasedItems from './components/PurchasedItems'
-
+import { BASE_URL } from './Globals'
 
 
 
@@ -43,7 +43,7 @@ const App = () => {
   
 
   useEffect(() => {
-    fetch("/me", {
+    fetch(BASE_URL + "/me", {
       credentials: "include",
     })
     .then((res) => {
@@ -58,7 +58,7 @@ const App = () => {
       }
     });
 
-    fetch("/items")
+    fetch(BASE_URL + "/items")
     .then((resp) => resp.json())
     .then((data) => {
         setItems(data)
@@ -68,7 +68,7 @@ const App = () => {
 
  
 const searchItems = term => {
-  fetch("/items?search=" + term)
+  fetch(BASE_URL + "/items?search=" + term)
   .then(resp => resp.json())
   .then(data => setItemList(data))
 }
@@ -77,7 +77,7 @@ const filterItems = filter => {
   if (filter === "") {
       setItemList(items)
   } else {
-      fetch("/items?filter=" + filter)
+      fetch( BASE_URL + "/items?filter=" + filter)
       .then(resp => resp.json())
       .then(data => setItemList(data))
    }
@@ -90,7 +90,7 @@ const backToItems = () => {
 
   
   const onBuyItem = (item) => {
-    fetch(`/items/${item.id}/sold`,{
+    fetch(`${BASE_URL}/items/${item.id}/sold`,{
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
@@ -115,7 +115,7 @@ const backToItems = () => {
      setItemList([...itemList, listing])
   }
 const fetchListings = () => {
-  fetch("/listings")
+  fetch(BASE_URL + "/listings")
         .then((resp) => resp.json())
         .then((data) => setListings(data))
 }
@@ -143,7 +143,7 @@ const fetchListings = () => {
   }
 
   const fetchPurchasedItems = () => {
-    fetch("/purchased_items")
+    fetch(BASE_URL + "/purchased_items")
     .then(resp => resp.json())
     .then(data => setPurchasedItems(data))
   }
@@ -154,7 +154,7 @@ const fetchListings = () => {
         item_id: item.id, user_id: currentUser.id
       }
     }
-    fetch("/favorite_items", { 
+    fetch(BASE_URL + "/favorite_items", { 
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -177,7 +177,7 @@ const fetchListings = () => {
   const removeFavorite = (item) => {
     const foundFavorite = favorites.find((fav) => fav.id === item.id)
     
-   return  fetch(`/favorite_items/${foundFavorite.id}`, {
+   return  fetch(`${BASE_URL}/favorite_items/${foundFavorite.id}`, {
       method: "DELETE"
     })
     .then(resp => resp.json())

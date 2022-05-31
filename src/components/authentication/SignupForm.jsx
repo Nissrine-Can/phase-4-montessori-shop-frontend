@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Header, Form, Grid, Segment } from 'semantic-ui-react'
-
+import { BASE_URL } from '../../Globals'
 
 const Signup = ({ setCurrentUser, setAuthenticated, setFavorites }) => {
 
@@ -25,7 +25,7 @@ const Signup = ({ setCurrentUser, setAuthenticated, setFavorites }) => {
     e.preventDefault();
    
     const userCreds = { ...formData }
-    fetch("/signup", {
+    fetch(BASE_URL + "/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

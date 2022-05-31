@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
  import { Button, Header, Form, Grid, Segment, Dropdown } from 'semantic-ui-react'
+import { BASE_URL } from '../Globals'
  
 
  const ageRangeOptions = [
@@ -66,7 +67,7 @@ const SellItemForm = ({ addItem }) => {
         const paramsData ={
             item: formData
         }
-        fetch("/items", {
+        fetch(BASE_URL + "/items", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
