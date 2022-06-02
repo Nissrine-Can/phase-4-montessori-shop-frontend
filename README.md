@@ -13,6 +13,6 @@ In this app, the user can buy or sell their own products. The user can like an i
 
 # Entity Relationship Diagram
 
-![entity relationship diagram](frontend-montessori-shop/images/image1.png?raw=true)
+![entity relationship diagram](frontend-montessori-shop/src/images/image1.png?raw=true)
 
 
