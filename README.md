@@ -6,13 +6,13 @@ In this app, the user can buy or sell their own products. The user can like an i
 
 # Technologies
 
-- PostgreSQL database
-- React framework for frontend
-- Ruby on Rails (API only) for backend
+- PostgreSQL  (~> 1.1) database
+- React (^18.0.0) framework for frontend
+- Ruby on Rails rails (~> 7.0.2, >= 7.0.2.3) (API only) for backend
 - Semantic UI React for styling
 
 # Entity Relationship Diagram
 
-! [entity relationship diagram](frontend-montessori-shop/images/Screen Shot 2022-05-27 at 8.35.15 PM.png)
+![entity relationship diagram](frontend-montessori-shop/images.png)
 
 
