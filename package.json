@@ -2,6 +2,7 @@
   "name": "frontend-montessori-shop",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
@@ -15,6 +16,7 @@
     "semantic-ui-react": "^2.1.2",
     "web-vitals": "^2.1.0"
   },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
