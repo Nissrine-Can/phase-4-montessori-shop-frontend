@@ -15,4 +15,22 @@ In this app, the user can buy or sell their own products. The user can like an i
 
 ![entity relationship diagram](https://user-images.githubusercontent.com/88294699/171664124-34ef9980-adcd-4244-908a-c0c35756247f.png)
 
+# Features 
+## Home page
+
+![home page](https://user-images.githubusercontent.com/88294699/171666459-5a1b2d44-1bb5-42b3-b3c1-3e8478b1da27.png)
+
+## About Us
+
+![about us](https://user-images.githubusercontent.com/88294699/171666761-59f07621-f407-4a7d-b667-8df284ef73b1.png)
+
+## Browse and Buy 
+
+![browse and buy](https://user-images.githubusercontent.com/88294699/171667226-fb2930b8-1944-42b0-8143-0f35ef231288.png)
+
+![browse and buy](https://user-images.githubusercontent.com/88294699/171667241-ee0a6e30-2bec-4672-9cbe-47ad6da5d936.png)
+
+## Item Details
+
+![item details](https://user-images.githubusercontent.com/88294699/171667763-0d19ef02-bab9-4aa3-9160-bb078062ab12.png)
 
