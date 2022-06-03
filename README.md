@@ -30,7 +30,34 @@ In this app, the user can buy or sell their own products. The user can like an i
 
 ![browse and buy](https://user-images.githubusercontent.com/88294699/171667241-ee0a6e30-2bec-4672-9cbe-47ad6da5d936.png)
 
+## Filter by Age Range
+
+![filter by age range](https://user-images.githubusercontent.com/88294699/171870641-58ae18f8-5b1f-47ab-9a2c-d8d53e70602e.png)
+
+## Search by Key Word
+
+![search by key word](https://user-images.githubusercontent.com/88294699/171870871-31c3a86b-b320-4e69-806c-35f9254756f1.png)
+
 ## Item Details
 
 ![item details](https://user-images.githubusercontent.com/88294699/171667763-0d19ef02-bab9-4aa3-9160-bb078062ab12.png)
 
+## Favorite Items
+
+![favorite items](https://user-images.githubusercontent.com/88294699/171869682-2205727c-14cf-4591-ac2e-66ab2685a391.png)
+
+## Accounts
+
+![account](https://user-images.githubusercontent.com/88294699/171869959-6dd5ea03-1b3b-472f-aa48-fa3178a15fed.png)
+
+## Sell an Item 
+
+![sell an item](https://user-images.githubusercontent.com/88294699/171870140-564c8110-da22-4d03-bd2c-40ce9f19d762.png)
+
+## Purchased Items 
+
+![purchased items](https://user-images.githubusercontent.com/88294699/171871101-2d3ad27f-6ae1-41c2-bc1a-c137b97a9700.png)
+
+## Listings 
+
+![listings](https://user-images.githubusercontent.com/88294699/171871367-24380a11-2ec5-4d2d-b802-7691ae1db7a5.png)
