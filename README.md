@@ -4,12 +4,16 @@ Montessori Shop is an Ecommerce website where the user can buy or sell used mont
 
 In this app, the user can buy or sell their own products. The user can like an item and save it to a favorites list. If the user choose to list an item, they have the option to edit or delete their listing.
 
+[Video Walkthrough](https://user-images.githubusercontent.com/88294699/171877290-2b9e8224-814c-4a27-87cd-9422418f7c62.mp4)
 # Technologies
 
 - PostgreSQL  (~> 1.1) database
 - React (^18.0.0) framework for frontend
 - Ruby on Rails rails (~> 7.0.2, >= 7.0.2.3) (API only) for backend
 - Semantic UI React for styling
+# Backend Repository 
+
+[backend repository](https://github.com/Nissrine-Can/phase-4-montessori-shop-backend)
 
 # Entity Relationship Diagram
 
